@@ -47,63 +47,56 @@
           url: 'jacred.pro',
           key: '',
           parser_torrent_type: 'jackett'
-        }
-      },
-      {
+      }
+    }, {
         base: 'jacred_xyz',
         name: 'Jacred.xyz',
         settings: {
           url: 'jacred.xyz',
           key: '',
           parser_torrent_type: 'jackett'
-        }
-      },
-      {
+      }
+    }, {
         base: 'https://jr.maxvol.pro',
         name: 'jr.maxvol.pro',
         settings: {
           url: 'https://jr.maxvol.pro',
           key: '',
           parser_torrent_type: 'jackett'
-        }
-      },
-      {
+      }
+    }, {
         base: 'http://spawnum.duckdns.org:49117',
         name: 'Spawn V1 🇺🇦',
         settings: {
           url: 'http://spawnum.duckdns.org:49117',
           key: '2',
           parser_torrent_type: 'jackett'
-        }
-      },
-      {
+      }
+    }, {
         base: 'http://spawnum.duckdns.org:59117',
         name: 'Spawn V2 🇺🇦',
         settings: {
           url: 'http://spawnum.duckdns.org:59117',
           key: '2',
           parser_torrent_type: 'jackett'
-        }
-      },
-      {
+      }
+    }, {
         base: 'jac.stull.xyz',
         name: 'jac.stull.xyz',
         settings: {
           url: 'jac.stull.xyz',
           key: '1',
           parser_torrent_type: 'jackett'
-        }
-      },
-      {
+      }
+    }, {
         base: 'https://jackett.1337.cx',
         name: 'jackett.1337.cx',
         settings: {
           url: 'https://jackett.1337.cx',
           key: '7',
           parser_torrent_type: 'jackett'
-        }
       }
-    ];
+    }];
 
     /**/
     // Lampa.Controller.listener.follow('toggle', (e) => {
