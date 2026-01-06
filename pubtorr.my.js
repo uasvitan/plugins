@@ -72,8 +72,7 @@
         name: 'Spawn V1 🇺🇦',
         settings: {
           url: 'http://spawnum.duckdns.org:49117',
-          key: '',
-          api: 2,
+          key: '2',
           parser_torrent_type: 'jackett'
         }
       },
@@ -82,8 +81,7 @@
         name: 'Spawn V2 🇺🇦',
         settings: {
           url: 'http://spawnum.duckdns.org:59117',
-          key: '',
-          api: 2,
+          key: '2',
           parser_torrent_type: 'jackett'
         }
       },
@@ -92,8 +90,7 @@
         name: 'jac.stull.xyz',
         settings: {
           url: 'jac.stull.xyz',
-          key: '',
-          api: 1,
+          key: '1',
           parser_torrent_type: 'jackett'
         }
       },
@@ -102,8 +99,7 @@
         name: 'jackett.1337.cx',
         settings: {
           url: 'https://jackett.1337.cx',
-          key: '',
-          api: 7,
+          key: '7',
           parser_torrent_type: 'jackett'
         }
       }
