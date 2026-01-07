@@ -3,7 +3,7 @@
 
   var Defined = {
     api: 'lampac',
-    localhost: 'http://ua-online.mooo.com:8081/',
+    localhost: 'https://portal-tv.net/',
     apn: ''
   };
 
@@ -28,7 +28,7 @@
   }
 }
 
-var hostkey = 'http://ua-online.mooo.com:8081'.replace('http://', '').replace('https://', '');
+var hostkey = 'https://portal-tv.net'.replace('http://', '').replace('https://', '');
 
 if (!window.rch_nws || !window.rch_nws[hostkey]) {
   if (!window.rch_nws) window.rch_nws = {};
@@ -53,7 +53,7 @@ window.rch_nws[hostkey].typeInvoke = function rchtypeInvoke(host, call) {
     if (Lampa.Platform.is('android') || Lampa.Platform.is('tizen')) check(true);
     else {
       var net = new Lampa.Reguest();
-      net.silent('http://ua-online.mooo.com:8081'.indexOf(location.host) >= 0 ? 'https://github.com/' : host + '/cors/check', function() {
+      net.silent('https://portal-tv.net'.indexOf(location.host) >= 0 ? 'https://github.com/' : host + '/cors/check', function() {
         check(true);
       }, function() {
         check(false);
@@ -65,7 +65,7 @@ window.rch_nws[hostkey].typeInvoke = function rchtypeInvoke(host, call) {
 };
 
 window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection) {
-  window.rch_nws[hostkey].typeInvoke('http://ua-online.mooo.com:8081', function() {
+  window.rch_nws[hostkey].typeInvoke('https://portal-tv.net', function() {
 
     client.invoke("RchRegistry", JSON.stringify({
       version: 149,
@@ -115,7 +115,7 @@ window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection)
                 client.invoke("RchResult", rchId, html);
               } else {
                 $.ajax({
-                  url: 'http://ua-online.mooo.com:8081/rch/gzresult?id=' + rchId,
+                  url: 'https://portal-tv.net/rch/gzresult?id=' + rchId,
                   type: 'POST',
                   data: compressedArray,
                   async: true,
@@ -172,7 +172,7 @@ window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection)
     });
   });
 };
-  window.rch_nws[hostkey].typeInvoke('http://ua-online.mooo.com:8081', function() {});
+  window.rch_nws[hostkey].typeInvoke('https://portal-tv.net', function() {});
 
   function rchInvoke(json, call) {
     if (window.nwsClient && window.nwsClient[hostkey] && window.nwsClient[hostkey]._shouldReconnect){
@@ -195,7 +195,7 @@ window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection)
 
   function rchRun(json, call) {
     if (typeof NativeWsClient == 'undefined') {
-      Lampa.Utils.putScript(["http://ua-online.mooo.com:8081/js/nws-client-es5.js?v18112025"], function() {}, false, function() {
+      Lampa.Utils.putScript(["https://portal-tv.net/js/nws-client-es5.js?v18112025"], function() {}, false, function() {
         rchInvoke(json, call);
       }, true);
     } else {
@@ -258,7 +258,7 @@ window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection)
 	
     if (balansers_with_search == undefined) {
       network.timeout(10000);
-      network.silent(account('http://ua-online.mooo.com:8081/lite/withsearch'), function(json) {
+      network.silent(account('https://portal-tv.net/lite/withsearch'), function(json) {
         balansers_with_search = json;
       }, function() {
 		  balansers_with_search = [];
@@ -790,7 +790,7 @@ else if (element.url) {
   if (false) {
     if (Platform.is('browser') && location.host.indexOf("127.0.0.1") !== -1) {
       Noty.show('Видео открыто в playerInner', {time: 3000});
-      $.get('http://ua-online.mooo.com:8081/player-inner/' + element.url);
+      $.get('https://portal-tv.net/player-inner/' + element.url);
       return;
     }
 
@@ -1710,7 +1710,7 @@ else if (element.url) {
         Lampa.Activity.push({
           url: params.element.url,
           title: 'Lampac - ' + params.element.title,
-          component: 'svtn',
+          component: 'lampac',
           movie: params.element,
           page: 1,
           search: params.element.title,
@@ -1725,13 +1725,13 @@ else if (element.url) {
   }
 
   function startPlugin() {
-    window.svtn_plugin = true;
+    window.lampac_plugin = true;
     var manifst = {
       type: 'video',
       version: '1.6.4',
-      name: '[Free] Світан | t.me/svitan_online',
+      name: 'Lampac',
       description: 'Плагин для просмотра онлайн сериалов и фильмов',
-      component: 'svtn',
+      component: 'lampac',
       onContextMenu: function onContextMenu(object) {
         return {
           name: Lampa.Lang.translate('lampac_watch'),
@@ -1740,7 +1740,7 @@ else if (element.url) {
       },
       onContextLauch: function onContextLauch(object) {
         resetTemplates();
-        Lampa.Component.add('svtn', component);
+        Lampa.Component.add('lampac', component);
 		
 		var id = Lampa.Utils.hash(object.number_of_seasons ? object.original_name : object.original_title);
 		var all = Lampa.Storage.get('clarification_search','{}');
@@ -1748,7 +1748,7 @@ else if (element.url) {
         Lampa.Activity.push({
           url: '',
           title: Lampa.Lang.translate('title_online'),
-          component: 'svtn',
+          component: 'lampac',
           search: all[id] ? all[id] : object.title,
           search_one: object.title,
           search_two: object.original_title,
@@ -1758,8 +1758,8 @@ else if (element.url) {
         });
       }
     };
-	addSourceSearch('Spider SVTN', 'spider');
-	addSourceSearch('Spider SVTN - Anime', 'spider/anime');
+	
+	
     Lampa.Manifest.plugins = manifst;
     Lampa.Lang.add({
       lampac_watch: { //
@@ -1871,7 +1871,7 @@ else if (element.url) {
       Lampa.Template.add('lampac_prestige_watched', "<div class=\"online-prestige online-prestige-watched selector\">\n            <div class=\"online-prestige-watched__icon\">\n                <svg width=\"21\" height=\"21\" viewBox=\"0 0 21 21\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <circle cx=\"10.5\" cy=\"10.5\" r=\"9\" stroke=\"currentColor\" stroke-width=\"3\"/>\n                    <path d=\"M14.8477 10.5628L8.20312 14.399L8.20313 6.72656L14.8477 10.5628Z\" fill=\"currentColor\"/>\n                </svg>\n            </div>\n            <div class=\"online-prestige-watched__body\">\n                \n            </div>\n        </div>");
     }
     var button = "<div class=\"full-start__button selector view--online lampac--button\" data-subtitle=\"".concat(manifst.name, " v").concat(manifst.version, "\">\n         <svg width=\"28\" height=\"29\" viewBox=\"0 0 28 29\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<circle cx=\"14\" cy=\"14.5\" r=\"13\" stroke=\"currentColor\" stroke-width=\"2.7\"/>\n<path d=\"M18.0739 13.634C18.7406 14.0189 18.7406 14.9811 18.0739 15.366L11.751 19.0166C11.0843 19.4015 10.251 18.9204 10.251 18.1506L10.251 10.8494C10.251 10.0796 11.0843 9.5985 11.751 9.9834L18.0739 13.634Z\" fill=\"currentColor\"/>\n</svg>\n\n        <span>#{title_online}</span>\n    </div>"); // нужна заглушка, а то при страте лампы говорит пусто
-    Lampa.Component.add('svtn', component); //то же самое
+    Lampa.Component.add('lampac', component); //то же самое
     resetTemplates();
 
     function addButton(e) {
@@ -1880,7 +1880,7 @@ else if (element.url) {
 	  // //console.log(btn.clone().removeClass('focus').prop('outerHTML'))
       btn.on('hover:enter', function() {
         resetTemplates();
-        Lampa.Component.add('svtn', component);
+        Lampa.Component.add('lampac', component);
 		
 		var id = Lampa.Utils.hash(e.movie.number_of_seasons ? e.movie.original_name : e.movie.original_title);
 		var all = Lampa.Storage.get('clarification_search','{}');
@@ -1888,7 +1888,7 @@ else if (element.url) {
         Lampa.Activity.push({
           url: '',
           title: Lampa.Lang.translate('title_online'),
-          component: 'svtn',
+          component: 'lampac',
           search: all[id] ? all[id] : e.movie.title,
           search_one: e.movie.title,
           search_two: e.movie.original_title,
@@ -1923,6 +1923,6 @@ else if (element.url) {
       Lampa.Storage.sync('online_watched_last', 'object_object');
     }
   }
-  if (!window.svtn_plugin) startPlugin();
+  if (!window.lampac_plugin) startPlugin();
 
 })();
